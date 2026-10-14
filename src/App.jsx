@@ -19,6 +19,8 @@ import {
   Receipt
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import ParticlesCanvas from './components/ParticlesCanvas';
+import OutcomeChart from './components/OutcomeChart';
 
 const PRESET_MESSAGES = [
   {
@@ -185,11 +187,14 @@ export default function App() {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="relative pt-12 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      {/* Hero Section with Casberry-style Particles Canvas */}
+      <section className="relative pt-16 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Interactive WebGL / Casberry Canvas Simulation */}
+        <ParticlesCanvas color="245, 158, 11" particleCount={50} connectionDistance={120} />
+
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(245,158,11,0.08),transparent_50%)] pointer-events-none" />
-        <div className="max-w-5xl mx-auto text-center space-y-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-700/80 text-xs text-amber-300">
+        <div className="relative z-10 max-w-5xl mx-auto text-center space-y-6">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-slate-700/80 text-xs text-amber-300 shadow-md">
             <Smartphone className="w-4 h-4 text-amber-400" />
             <span>Zero Mobile Apps to Install • Works in 1-Bar Cellular Basements • QuickBooks Online Synced</span>
           </div>
@@ -198,21 +203,27 @@ export default function App() {
             SMS Copilot & Quick Estimator for Field Trades
           </h1>
 
-          <p className="text-lg sm:text-xl text-slate-400 max-w-3xl mx-auto font-normal leading-relaxed">
+          <p className="text-lg sm:text-xl text-slate-300 max-w-3xl mx-auto font-normal leading-relaxed">
             Plumbers, HVAC techs, and electricians work with greasy hands and zero basement data. Text quick job notes or voice memos to our Twilio number — we automatically generate QuickBooks invoices, material manifests, and SMS customer payment links.
           </p>
+
+          {/* Larry Ellison Playbook: Confuse the Tenses & Sell Harder Than You Build */}
+          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-xl bg-amber-950/40 border border-amber-500/30 text-xs text-amber-200">
+            <Sparkles className="w-4 h-4 text-amber-400 shrink-0" />
+            <span><strong className="text-white">Service-as-a-Software Trade Invoicing:</strong> Zero back-office billing clerks. Field texts convert to paid invoices in 14 seconds flat.</span>
+          </div>
 
           <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
             <a 
               href="#simulator" 
-              className="px-6 py-3.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm rounded-xl transition-all shadow-lg shadow-amber-500/25 flex items-center gap-2"
+              className="px-6 py-3.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm rounded-xl transition-all shadow-lg shadow-amber-500/25 flex items-center gap-2 cursor-pointer"
             >
               <span>Test SMS Job Conversion</span>
               <ArrowRight className="w-4 h-4" />
             </a>
             <a 
               href="#rates" 
-              className="px-6 py-3.5 bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-semibold text-sm rounded-xl transition-all flex items-center gap-2"
+              className="px-6 py-3.5 bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-semibold text-sm rounded-xl transition-all flex items-center gap-2 cursor-pointer"
             >
               <Wrench className="w-4 h-4 text-amber-400" />
               <span>Configure Trade Markup Rules</span>
@@ -240,6 +251,9 @@ export default function App() {
           </div>
         </div>
       </section>
+
+      {/* Sequoia Framework Outcome Visualizer (Bklit UI + Julien Bek $1 vs $6 Ratio) */}
+      <OutcomeChart onCtaClick={() => setIsCabModalOpen(true)} />
 
       {/* Feature 1: Two-Way SMS Trade Simulator */}
       <section id="simulator" className="py-16 px-4 sm:px-6 lg:px-8 border-t border-slate-900 bg-slate-950/60">
